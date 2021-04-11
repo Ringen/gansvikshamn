@@ -67,3 +67,7 @@ public
 .contentful.json
 # Local Netlify folder
 .netlify
+
+# local environment variable files
+.env.development
+.env.production
