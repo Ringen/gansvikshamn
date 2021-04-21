@@ -5,7 +5,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js');
+    const blogPost = path.resolve('./src/templates/blog-post.jsx');
     resolve(
       graphql(
         `
@@ -19,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-        `,
+        `
       ).then((result) => {
         if (result.errors) {
           console.log(result.errors);
@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
-      }),
+      })
     );
   });
 };
