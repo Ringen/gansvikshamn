@@ -2,15 +2,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from 'styled-components';
 
-import styles from './article-preview.module.css';
+const PreviewTitle = styled.h3`
+  font-size: 1.5em;
+`;
 
 export default ({ article }) => (
-  <div className={styles.preview}>
+  <div>
     <Img alt="" fluid={article.heroImage.fluid} />
-    <h3 className={styles.previewTitle}>
+    <PreviewTitle>
       <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
+    </PreviewTitle>
     <small>{article.publishDate}</small>
     <p
       dangerouslySetInnerHTML={{
