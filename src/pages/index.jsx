@@ -5,9 +5,6 @@ import { Helmet } from 'react-helmet';
 import Hero from '../components/hero';
 import Layout from '../components/layout';
 import ArticlePreview from '../components/article-preview';
-import ArticleList from '../components/ArticleList';
-import SectionHeadline from '../components/SectionHeadline';
-import ContentWrapper from '../components/ContentWrapper';
 
 const RootIndex = ({ data, location }) => {
   // const siteTitle = get(this, 'props.data.site.siteMetadata.title');
@@ -23,16 +20,16 @@ const RootIndex = ({ data, location }) => {
       <div style={{ background: '#fff' }}>
         <Helmet title={siteTitle} />
         <Hero data={author.node} />
-        <ContentWrapper>
-          <SectionHeadline as="h2">Recent articles</SectionHeadline>
-          <ArticleList>
+        <div className="wrapper">
+          <h2 className="section-headline">Recent articles</h2>
+          <ul className="article-list">
             {posts.map(({ node }) => (
               <li key={node.slug}>
                 <ArticlePreview article={node} />
               </li>
             ))}
-          </ArticleList>
-        </ContentWrapper>
+          </ul>
+        </div>
       </div>
     </Layout>
   );

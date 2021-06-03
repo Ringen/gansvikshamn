@@ -2,11 +2,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import Img from 'gatsby-image';
 import Layout from '../components/layout';
-import SectionHeadline from '../components/SectionHeadline';
-import ContentWrapper from '../components/ContentWrapper';
 
-import { HeroImage, Wrapper } from '../components/hero';
+import heroStyles from '../components/hero.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
   // TODO fetch title
@@ -18,11 +17,15 @@ const BlogPostTemplate = ({ data, location }) => {
     <Layout location={location}>
       <div style={{ background: '#fff' }}>
         <Helmet title={`${post.title} | ${siteTitle}`} />
-        <Wrapper>
-          <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
-        </Wrapper>
-        <ContentWrapper>
-          <SectionHeadline>{post.title}</SectionHeadline>
+        <div className={heroStyles.hero}>
+          <Img
+            className={heroStyles.heroImage}
+            alt={post.title}
+            fluid={post.heroImage.fluid}
+          />
+        </div>
+        <div className="wrapper">
+          <h1 className="section-headline">{post.title}</h1>
           <p
             style={{
               display: 'block',
@@ -35,7 +38,7 @@ const BlogPostTemplate = ({ data, location }) => {
               __html: post.body.childMarkdownRemark.html,
             }}
           />
-        </ContentWrapper>
+        </div>
       </div>
     </Layout>
   );
